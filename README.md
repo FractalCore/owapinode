@@ -1,7 +1,16 @@
 # owapinode
 An overwatch API built in Node.JS
 
-# Current Endpoints:
+## Installation
+```
+npm install
+mkdir tmp
+mkdir tmp/cache
+```
+
+And run with `node index` or `npm start`
+
+## Current Endpoints:
 
 ### `GET /api/v1/user/:battletag`
 
