@@ -1,10 +1,13 @@
+//Import Modules
 var restifyRouter	= require('restify-routing'),
 	request			= require('request'),
 	cachedRequest	= require('cached-request')(request),
 	cheerio			= require('cheerio');
 
+//Define the router to be exported
 var router			= new restifyRouter();
 
+//Basic stats, pretty much the bare minimum.
 router.get('/:username', function(req, res) {
 	
 	//Pull Username from req
@@ -15,11 +18,11 @@ router.get('/:username', function(req, res) {
 	var requestOptions = {
 			url: userProfileURL,
 			ttl: 300000
-		}
+	}
 	//Download the page for the user
 	cachedRequest(requestOptions, function(error, response, html) {
 		
-		//SUPER basic error handling
+		//TODO: Better handling of errors...
 		if (!error) {
 			
 			//Load the page into cheerio
@@ -45,10 +48,8 @@ router.get('/:username', function(req, res) {
 			
 			res.send(json);
 			
-		} else if(request.statusCode == 404) {
-			res.send(400, { error: "username invalid"});
 		} else {
-			res.send(500, { error: "server error" });
+			res.send(500, { error: "server error"})
 		}
 	})
 	
