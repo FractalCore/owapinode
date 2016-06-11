@@ -24,7 +24,8 @@
   "dependencies": {
     "cached-request": "^1.0.0",
     "cheerio": "^0.20.0",
-    "express": "^4.13.4",
-    "request": "^2.72.0"
+    "request": "^2.72.0",
+    "restify": "^4.1.0",
+    "restify-routing": "^0.3.8"
   }
 }
