@@ -38,3 +38,8 @@ jspm_packages
 
 # Cache Files...
 tmp/cache
+
+# IntelliJ Webstorm stuffs
+.idea/
+.idea/*
+.idea/vcs.xml
