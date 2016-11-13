@@ -9,10 +9,10 @@ var router			= new restifyRouter();
 
 //Basic stats, pretty much the bare minimum.
 router.get('/:username', function(req, res) {
-	
+
 	//Pull Username from req
-	var username = req.params.username
-	
+	var username = req.params.username;
+
 	//Build the Scraped Profile URL
 	var userProfileURL = 'https://playoverwatch.com/en-us/career/pc/us/' + username;
 	var requestOptions = {
@@ -21,10 +21,10 @@ router.get('/:username', function(req, res) {
 	}
 	//Download the page for the user
 	cachedRequest(requestOptions, function(error, response, html) {
-		
+
 		//TODO: Better handling of errors...
 		if (!error) {
-			
+
 			//Load the page into cheerio
 			var $ = cheerio.load(html);
 
@@ -99,14 +99,14 @@ router.get('/:username', function(req, res) {
 					}
 				}
 			};
-			
+
 			res.send(json);
-			
+
 		} else {
 			res.send(500, { error: "server error"})
 		}
 	})
-	
+
 })
 
 module.exports = router;

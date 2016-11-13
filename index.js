@@ -7,6 +7,7 @@ var server = restify.createServer({
 	name: 'OWAPI'
 });
 
+console.log(process.cwd());
 //Define router
 var router = new restifyRouter();
 router.get('/', function(req, res){
@@ -14,7 +15,7 @@ router.get('/', function(req, res){
 });
 
 //Shove API requests to make index.js slimmer...
-router.use('/api', require('./routes'));
+router.use('/api', require('./routes/index.js'));
 
 //Make the magic happen (and lock the routes)
 router.applyRoutes(server)
